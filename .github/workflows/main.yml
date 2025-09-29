@@ -2,7 +2,7 @@ name: Posting to WP
 
 on:
   schedule:
-    - cron: "11 2 * * *" # everyday at 02:02 and 14:02
+    - cron: "16 2 * * *" # everyday at 02:02 and 14:02
   workflow_dispatch:      # allow manual run
 
 permissions:
