@@ -1,0 +1,29 @@
+name: Posting to WP
+
+on:
+  schedule:
+    - cron: "11 2 * * *" # everyday at 02:02 and 14:02
+  workflow_dispatch:      # allow manual run
+
+permissions:
+  contents: write  # allow commit & push
+
+jobs:
+  update-done:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r req.txt
+
+      - name: Run script
+        run: python main.py
